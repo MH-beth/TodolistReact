@@ -1,0 +1,97 @@
+.mains{
+    text-align :center;
+    border : solid 10px orange;
+    border-radius : 4rem;
+    background-color:slateblue;
+}
+li {
+    list-style : none;
+    font-size : 20px;
+    font-family :'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight : 300;
+}
+
+.name {
+    color : white;
+    text-decoration : underline;
+    font-weight : 700;
+}
+
+.tasks {
+    border : double 10px dodgerblue;
+    margin-left: 400px;
+    margin-right : 400px;
+    background-color : skyblue;
+    color : whitesmoke;
+    border-radius: 2rem;
+}
+button {
+    color: white;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.8em;
+    border-radius: 2rem;
+    border: 0;
+    cursor: pointer;
+    font-weight: 400;
+    font-stretch: normal;
+    letter-spacing: .8px;
+    padding: .72em 1.5em;
+    position: relative;
+    transition: all .2s ease-in-out;
+    background: orange;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+  
+  button:hover {
+    transition : all 0.5s ease-in-out;
+    border: solid 5px white;
+    background:linear-gradient(90deg, rgb(0, 255, 234), rgb(118, 0, 253));
+  }
+
+h3 {
+    text-decoration:underline;
+}
+
+input {
+    padding : 10px;
+    border : solid 5px white;
+    border-radius : 2rem;
+}
+
+.labels{
+    color : whitesmoke;
+    text-decoration:underline;
+}
+
+@media(max-width : 1000px){
+    .tasks{
+        margin-left: 200px;
+        margin-right : 200px;
+        text-align:center;
+    }
+}
+@media(max-width : 900px){
+    .tasks{
+        margin-left: 0px;
+        margin-right : 0px;
+        text-align:center;
+    }
+}
+
+.statue {
+    color : whitesmoke;
+    font-weight : 300;
+    font-size : 20px;
+    text-decoration : underline;
+}
+.statue:hover {
+    font-size : 30px;
+    color : orangered;
+    cursor :pointer;
+    transition: ease-in-out all .5s;
+}
