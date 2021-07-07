@@ -1,8 +1,8 @@
-##React Todolist
+<h1>React Todolist</h1>
 <h1>How To Run </h1>
 <ul>
-  <li>##git clone https://github.com/MH15O/TodolistReact todolist</li>
-  <li>##npm install</li>
+  <li>git clone https://github.com/MH15O/TodolistReact todolist</li>
+  <li>npm install</li>
   <li>npm start</li>
   <li> 127.0.0.1:3000</li>
 </ul>
