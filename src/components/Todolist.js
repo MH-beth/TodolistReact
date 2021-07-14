@@ -2,8 +2,13 @@ import React from "react";
 import { Alert, AlertTitle } from '@material-ui/lab';
 import { makeStyles } from '@material-ui/core/styles';
 import { green } from '@material-ui/core/colors';
+import DoneIcon from '@material-ui/icons/Done';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import "./assets/Todolist.css";
+import DeleteIcon from '@material-ui/icons/Delete';
+import Tooltip from '@material-ui/core/Tooltip';
+import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
+import AddBoxIcon from '@material-ui/icons/AddBox';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -34,17 +39,21 @@ const SimpleAlert = ({severity , text}) => {
     );
 };
 
+
 const Todolist = () => {
     const classes = useStyles();
-    const [statue , setStatue] = React.useState("");
     let [tasks , setTasks] = React.useState([]);
     let stringTasks = tasks.toString();
     let realTasks = stringTasks.split(",")
     const [item , setItem] = React.useState("");
+    const [totalTasks , setTotalTasks] = React.useState(tasks.length);
+    const [tasksDone , setTasksDone] = React.useState(0);
+    const [donElements ,setDoneElements] = React.useState([])
     const addTask = () => {
         if(item.length > 0)
         {
             setTasks(tasks.concat(item));
+            setTotalTasks(totalTasks+1);
             <SimpleAlert severity="success" text = "SuccessFully added"/>
             setItem("");
         }else{
@@ -54,6 +63,18 @@ const Todolist = () => {
             
         }
     };
+    if(totalTasks < 0)
+    {
+        setTotalTasks(0);
+    }
+    if(tasksDone > totalTasks )
+    {
+        setTasksDone(totalTasks);
+    }
+    if(tasksDone < 0)
+    {
+        setTasksDone(0);
+    }
     return(
         <div className = "mains">
             <h1 className = "name">Todolist</h1>
@@ -65,18 +86,26 @@ const Todolist = () => {
                             <li key={i}>{task} <button onClick = {() => {
                                 let taskIndex = tasks.indexOf(task);
                                 tasks[taskIndex] = "This Task Is Done";
+                                setTasksDone(tasksDone + 1);
                                 setTasks(tasks.filter(task => task !== "This Task Is Done"));
-                            }}>Done</button></li>
+                            }}><Tooltip title="Done"><DoneIcon/></Tooltip></button><button onClick = {() => {setTasks(tasks.filter(task1 =>task1!== task));
+                            setTotalTasks(totalTasks-1)}}>
+                                <Tooltip title = "Delete"><DeleteIcon/></Tooltip>
+                                </button></li>
                         );
                     })}
                 </ul>
+                <div className="statue">
+                <p>Total Tasks Done : {tasksDone}/{totalTasks}</p>
+                <p>Task Done Rate : {Math.round((tasksDone/totalTasks)*100)}%</p>
+                </div>
             </div>
             <br/><br/>
             <label htmlFor="title" className="labels">Add Your Task</label>
             <br/><br/>
             <div className = "inputs">
                 <div className="realInput">
-                <a className="unique" onClick = {() => {console.log("clicked")}}><HomeIcon/></a>
+                <a className="unique" onClick = {() => {console.log("clicked")}}><PlaylistAddCheckIcon/></a>
                 <input type = "text" 
                 placeholder = "Your Task"
                 onChange = {(e) => setItem(e.target.value)}>
@@ -84,9 +113,7 @@ const Todolist = () => {
                 </div>
             </div>
             <br/>
-            <button onClick={addTask}>Add Task</button>
-            <p className = "statue"
-            onClick = {()=> setStatue("")}>{statue}</p>
+            <button className = "hello" onClick={addTask}> <AddBoxIcon className=  "icon"/>  Add Task</button>
         </div>
     );
 };

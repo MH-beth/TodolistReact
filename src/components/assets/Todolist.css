@@ -11,6 +11,15 @@ li {
     font-weight : 300;
 }
 
+@keyframes wave {
+    0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+}
+
 .name {
     color : white;
     text-decoration : underline;
@@ -105,15 +114,12 @@ h3 {
 }
 
 .statue {
-    color : whitesmoke;
-    font-weight : 300;
     font-size : 20px;
-    text-decoration : underline;
+    font-weight : 500;
+    color :orange;
 }
 .statue:hover {
     font-size : 30px;
-    color : orangered;
-    cursor :pointer;
     transition: ease-in-out all .5s;
 }
 
@@ -161,5 +167,48 @@ h3 {
 }
 
 .unique {
+    position : relative;
     color : dodgerblue;
+}
+
+@keyframes place {
+    0%{
+        bottom: 0px;
+        color : red;
+    }
+    25%{
+        color :rgb(118, 0, 253);
+    }
+    50%{
+        color:rgb(0, 255, 234);
+    }
+    100%{
+        bottom : 50px;
+    }
+}
+
+.unique:hover{
+    animation-duration: 2s;
+    animation-name:place;
+    animation-iteration-count:1;
+    transition:ease-in-out all 2s;
+}
+
+.crossed {
+    text-decoration :overline;  
+}
+
+.task {
+    text-decoration : underline;
+    font-weight : 300;
+    font-size : 20px;
+}
+
+.hello {
+    align-items : center;
+}
+.icon {
+    position:relative;
+    top : 2.5px;
+    font-size:19px !important;
 }
